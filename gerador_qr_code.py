@@ -110,7 +110,7 @@ def _parse_args(argv):
 
     parser = argparse.ArgumentParser(
         prog="gerador_qr_code.py",
-        description="Gerador de QR Code com quadrado central para logo (JPG/BMP/SVG).",
+        description="Gerador de QR Code com quadrado central para logo (JPG/BMP/PNG/SVG).",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument("--url", help="URL a codificar no QR Code")

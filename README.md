@@ -173,6 +173,7 @@ output/qrcode_logo.<format>
 ---
 
 📄 Autor: Raphael Simões Andrade - Desenvolvedor Full Stack .NET e Python 
+
 📅 Versão: 2.0.0  
 🔗 Licença: MIT  
 🌐 Compatível com: Windows, Linux, GitHub Codespaces
