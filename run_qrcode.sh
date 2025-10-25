@@ -1,38 +1,40 @@
+
 #!/bin/bash
-# ==========================================
-# Script: run_qrcode.sh
-# Descrição: Cria ambiente virtual, instala dependências e gera QRCode
-# Uso: ./run_qrcode.sh <URL> <FORMATO>
-# Exemplo: ./run_qrcode.sh http://nao-por-acaso.blogspot.com svg
-# ==========================================
+set -e
 
-set -e  # encerra se ocorrer erro
+show_help() {
+  cat <<'EOF'
+Uso:
+  run_qrcode.sh --url=URL [--filetype=jpg|bmp|png|svg] [--squareratio=25] [--squarecolor=white] [--size=600]
+  run_qrcode.sh URL FORMATO   (modo legado)
+EOF
+}
 
-if [ -z "$1" ]; then
-  echo "Uso: ./run_qrcode.sh <URL> <FORMATO>"
-  echo "Exemplo: ./run_qrcode.sh http://exemplo.com jpg"
-  exit 1
-fi
+URL=""; FILETYPE=""; SQUARERATIO=""; SQUARECOLOR=""; SIZE=""
+OTHER=()
 
-URL=$1
-FORMAT=${2:-jpg}
+for arg in "$@"; do
+  case "$arg" in
+    -h|--help) show_help; exit 0 ;;
+    --url=*) URL="${arg#*=}" ;;
+    --filetype=*) FILETYPE="${arg#*=}" ;;
+    --squareratio=*) SQUARERATIO="${arg#*=}" ;;
+    --squarecolor=*) SQUARECOLOR="${arg#*=}" ;;
+    --size=*) SIZE="${arg#*=}" ;;
+    *) OTHER+=("$arg") ;;
+  esac
+done
 
-# Cria venv se não existir
-if [ ! -d ".venv" ]; then
-  echo "🔧 Criando ambiente virtual..."
-  python3 -m venv .venv
-fi
+if [ -z "$URL" ] && [ "${#OTHER[@]}" -ge 1 ]; then URL="${OTHER[0]}"; fi
+if [ -z "$FILETYPE" ] && [ "${#OTHER[@]}" -ge 2 ]; then FILETYPE="${OTHER[1]}"; fi
 
-# Ativa o ambiente virtual
+if [ -z "$URL" ]; then echo "ERRO: URL obrigatoria."; show_help; exit 1; fi
+: "${FILETYPE:=jpg}"; : "${SQUARERATIO:=25}"; : "${SQUARECOLOR:=white}"; : "${SIZE:=600}"
+
+if [ ! -d ".venv" ]; then python3 -m venv .venv; fi
 source .venv/bin/activate
+python -m pip install --upgrade pip >/dev/null
+pip install -r requirements.txt >/dev/null
 
-# Instala dependências
-echo "📦 Instalando dependências..."
-pip install --upgrade pip
-pip install -r requirements.txt
-
-# Executa o gerador
-echo "🚀 Gerando QRCode..."
-python gerador_qr_code.py "$URL" "$FORMAT"
-
-echo "✅ QRCode gerado em: output/qrcode_logo.$FORMAT"
+python gerador_qr_code.py --url="$URL" --filetype="$FILETYPE" --squareratio="$SQUARERATIO" --squarecolor="$SQUARECOLOR" --size="$SIZE"
+echo "Saida: output/qrcode_logo.$FILETYPE"

@@ -1,21 +1,51 @@
 
 # 🧩 Gerador de QR Code com Espaço para Logo / QR Code Generator with Logo Space / Generador de QR con Espacio para Logo
 
+---
+
+## 🚀 **AGORA É MAIS FÁCIL — SUPORTE A FLAGS (Windows, Linux e Codespaces)**
+
+Este projeto agora permite definir **todos os parâmetros** diretamente pela linha de comando usando **flags modernas**!  
+Exemplo rápido:
+
+### 🪟 Windows (CMD ou PowerShell)
+```bat
+gerador_qr_code.bat --url=http://nao-por-acaso.blogspot.com --filetype=jpg --squareratio=30 --squarecolor=white --size=600
+```
+
+### 🐧 Linux / GitHub Codespaces
+```bash
+./run_qrcode.sh --url=http://nao-por-acaso.blogspot.com --filetype=svg --squareratio=25 --squarecolor=#FFFFFF --size=800
+```
+
+### 💡 Flags disponíveis
+| Flag | Descrição | Tipo / Intervalo | Padrão |
+|------|------------|------------------|---------|
+| `--url` | URL a ser codificada no QRCode | texto | **Obrigatório** |
+| `--filetype` | Formato do arquivo (`jpg`, `bmp`, `png`, `svg`) | texto | `jpg` |
+| `--squareratio` | Percentual do quadrado central (0–90) | número (%) | `25` |
+| `--squarecolor` | Cor do quadrado central (CSS ou HEX) | texto | `white` |
+| `--size` | Tamanho da imagem (lado, em pixels) | número (50–5000) | `600` |
+
+**Saída:** `output/qrcode_logo.<formato>`
+
+---
+
 ## 🇧🇷 Português
 
 ### 📘 Descrição
-Este projeto gera **QR Codes personalizados** em diferentes formatos (`JPG`, `BMP`, `SVG`) com um **espaço central branco** destinado à inserção de um **logo da empresa**.
+Ferramenta em Python para gerar **QR Codes personalizados** em vários formatos (`JPG`, `BMP`, `PNG`, `SVG`) com um **quadrado central branco** para inserir o **logo da empresa**.
 
-Ideal para uso corporativo, impressão, marketing e materiais digitais.
+Ideal para marketing, impressão e uso corporativo.
 
 ---
 
 ### ⚙️ Funcionalidades
 - Gera QR Codes a partir de qualquer URL.
 - Adiciona um quadrado central proporcional (para logo).
-- Suporte a formatos: **JPG, BMP, SVG**.
+- Suporte a formatos: **JPG, BMP, PNG, SVG**.
 - Cria automaticamente um ambiente virtual Python (`.venv`).
-- Script `.bat` automatizado para Windows.
+- Scripts prontos para Windows e Linux (Codespaces).
 - Log detalhado do processo com `loguru`.
 
 ---
@@ -29,13 +59,32 @@ pip install -r requirements.txt
 
 ---
 
-### 🚀 Execução Rápida
+### 🚀 Uso moderno (com flags)
+
+#### 🪟 Windows
+```bat
+gerador_qr_code.bat --url=http://nao-por-acaso.blogspot.com --filetype=jpg --squareratio=30 --squarecolor=white --size=600
+```
+
+#### 🐧 Linux / GitHub Codespaces
+```bash
+./run_qrcode.sh --url=http://nao-por-acaso.blogspot.com --filetype=svg --squareratio=25 --squarecolor=#FFFFFF --size=800
+```
+
+#### 📘 Ajuda
+```bash
+gerador_qr_code.bat --help
+./run_qrcode.sh --help
+```
+
+---
+
+### 💾 Modo legado (compatível com versões antigas)
 
 ```bash
 gerador_qr_code.bat <URL> <FORMATO>
 ```
-
-**Exemplo:**  
+**Exemplo:**
 ```bash
 gerador_qr_code.bat http://nao-por-acaso.blogspot.com svg
 ```
@@ -49,18 +98,10 @@ gerador_qr_code/
 │
 ├── gerador_qr_code.py
 ├── gerador_qr_code.bat
+├── run_qrcode.sh
 ├── requirements.txt
 ├── README.md
 └── output/
-```
-
----
-
-### 🧩 Saída
-
-O arquivo final será gerado em:
-```
-output/qrcode_logo.<formato>
 ```
 
 ---
@@ -68,63 +109,28 @@ output/qrcode_logo.<formato>
 ## 🇪🇸 Español
 
 ### 📘 Descripción
-Este proyecto genera **Códigos QR personalizados** en varios formatos (`JPG`, `BMP`, `SVG`) con un **cuadro central blanco** para insertar un **logo de empresa**.
+Este proyecto genera **Códigos QR personalizados** (`JPG`, `BMP`, `PNG`, `SVG`) con un **cuadro central blanco** para colocar un **logo**.
 
-Ideal para marketing, impresión y material digital.
-
----
-
-### ⚙️ Características
-- Genera códigos QR desde cualquier URL.
-- Añade un cuadro central proporcional (para el logo).
-- Formatos compatibles: **JPG, BMP, SVG**.
-- Crea un entorno virtual Python automáticamente (`.venv`).
-- Script `.bat` automatizado para Windows.
-- Registro detallado con `loguru`.
+Ideal para marketing, impresión y uso corporativo.
 
 ---
 
-### 🧰 Requisitos
+### 🚀 Ejemplo de uso con flags
 
+#### 🪟 Windows
+```bat
+gerador_qr_code.bat --url=http://nao-por-acaso.blogspot.com --filetype=jpg --squareratio=30 --squarecolor=white --size=600
+```
+
+#### 🐧 Linux / Codespaces
 ```bash
-Python 3.9+
-pip install -r requirements.txt
+./run_qrcode.sh --url=http://nao-por-acaso.blogspot.com --filetype=svg --squareratio=25 --squarecolor=#FFFFFF --size=800
 ```
 
----
-
-### 🚀 Ejecución rápida
-
+#### 🆘 Ayuda
 ```bash
-gerador_qr_code.bat <URL> <FORMATO>
-```
-
-**Ejemplo:**  
-```bash
-gerador_qr_code.bat http://nao-por-acaso.blogspot.com svg
-```
-
----
-
-### 📁 Estructura del Proyecto
-
-```
-gerador_qr_code/
-│
-├── gerador_qr_code.py
-├── gerador_qr_code.bat
-├── requirements.txt
-├── README.md
-└── output/
-```
-
----
-
-### 🧩 Salida
-
-El archivo final se generará en:
-```
-output/qrcode_logo.<formato>
+gerador_qr_code.bat --help
+./run_qrcode.sh --help
 ```
 
 ---
@@ -132,150 +138,41 @@ output/qrcode_logo.<formato>
 ## 🇬🇧 English
 
 ### 📘 Description
-This project generates **custom QR Codes** in multiple formats (`JPG`, `BMP`, `SVG`) with a **central white square** to insert your **company logo**.
+Python tool to generate **custom QR Codes** (`JPG`, `BMP`, `PNG`, `SVG`) with a **central white square** for a company logo.
 
-Perfect for corporate, print, and digital marketing materials.
-
----
-
-
-
-
-
-> **Este README no final mostra como USAR** (Windows e GitHub Codespaces).  
-> Os arquivos e scripts já estão no repositório.
+Ideal for corporate branding, printing, or marketing.
 
 ---
 
-## 🚀 Quick Start (PT/ES/EN)
+### 🚀 Example using flags
 
-- **Windows (.BAT):**
-  ```bat
-  gerador_qr_code.bat <URL> <FORMATO>
-  ```
-  Ex.: `gerador_qr_code.bat http://nao-por-acaso.blogspot.com svg`
+#### 🪟 Windows
+```bat
+gerador_qr_code.bat --url=http://nao-por-acaso.blogspot.com --filetype=jpg --squareratio=30 --squarecolor=white --size=600
+```
 
-- **GitHub Codespaces / Linux (.SH):**
-  ```bash
-  ./run_qrcode.sh <URL> <FORMATO>
-  ```
-  Ej.: `./run_qrcode.sh http://nao-por-acaso.blogspot.com jpg`
+#### 🐧 Linux / Codespaces
+```bash
+./run_qrcode.sh --url=http://nao-por-acaso.blogspot.com --filetype=svg --squareratio=25 --squarecolor=#FFFFFF --size=800
+```
 
-**Formatos suportados / Supported formats / Formatos soportados:** `jpg`, `bmp`, `svg`  
-**Saída / Output / Salida:** `output/qrcode_logo.<formato>`
-
----
-
-## 🇧🇷 Como usar no Windows (CMD/PowerShell)
-
-1) **Abrir terminal na raiz do projeto** (onde estão `gerador_qr_code.bat` e `requirements.txt`).  
-2) **Executar:**
-   ```bat
-   gerador_qr_code.bat <URL> <FORMATO>
-   ```
-   **Exemplos:**
-   ```bat
-   gerador_qr_code.bat https://minhaempresa.com.br jpg
-   gerador_qr_code.bat http://nao-por-acaso.blogspot.com svg
-   ```
-3) **Resultado:** arquivo gerado em `output/qrcode_logo.<formato>`.
-
-> 💡 Dica: Se estiver no **Git Bash**, rode via `cmd.exe /c gerador_qr_code.bat ...`.
+#### 🆘 Help
+```bash
+gerador_qr_code.bat --help
+./run_qrcode.sh --help
+```
 
 ---
 
-## ☁️ Como usar no GitHub Codespaces
-
-1) **Abrir o Codespace** deste repositório (Code → Codespaces → *Open*).  
-2) **No terminal do Codespaces, na raiz do projeto**, execute:
-   ```bash
-   ./run_qrcode.sh <URL> <FORMATO>
-   ```
-   **Exemplos:**
-   ```bash
-   ./run_qrcode.sh https://minhaempresa.com.br bmp
-   ./run_qrcode.sh http://nao-por-acaso.blogspot.com svg
-   ```
-3) **Resultado:** arquivo gerado em `output/qrcode_logo.<formato>`.
-
-> 🔐 Na primeira vez, se necessário, torne o script executável: `chmod +x run_qrcode.sh`.
+### 🧩 Output
+All generated QR Codes will be saved in:
+```
+output/qrcode_logo.<format>
+```
 
 ---
 
-## 🇪🇸 Uso en Windows (CMD/PowerShell)
-
-1) **Abra la terminal** en la carpeta del proyecto.  
-2) **Ejecute:**
-   ```bat
-   gerador_qr_code.bat <URL> <FORMATO>
-   ```
-   **Ejemplos:**
-   ```bat
-   gerador_qr_code.bat https://miempresa.com jpg
-   gerador_qr_code.bat http://nao-por-acaso.blogspot.com svg
-   ```
-3) **Salida:** `output/qrcode_logo.<formato>`
-
-> 💡 En **Git Bash**: `cmd.exe /c gerador_qr_code.bat ...`
-
----
-
-## ☁️ Uso en GitHub Codespaces
-
-1) **Abra el Codespace** de este repo.  
-2) **En la terminal del Codespace**, ejecute:
-   ```bash
-   ./run_qrcode.sh <URL> <FORMATO>
-   ```
-   **Ejemplos:**
-   ```bash
-   ./run_qrcode.sh https://miempresa.com bmp
-   ./run_qrcode.sh http://nao-por-acaso.blogspot.com svg
-   ```
-3) **Salida:** `output/qrcode_logo.<formato>`
-
-> 🔐 Primera vez: `chmod +x run_qrcode.sh` si hace falta.
-
----
-
-## 🇬🇧 Usage on Windows (CMD/PowerShell)
-
-1) **Open a terminal** in the project root.  
-2) **Run:**
-   ```bat
-   gerador_qr_code.bat <URL> <FORMAT>
-   ```
-   **Examples:**
-   ```bat
-   gerador_qr_code.bat https://mycompany.com jpg
-   gerador_qr_code.bat http://nao-por-acaso.blogspot.com svg
-   ```
-3) **Output:** `output/qrcode_logo.<format>`
-
-> 💡 On **Git Bash**: `cmd.exe /c gerador_qr_code.bat ...`
-
----
-
-## ☁️ Usage in GitHub Codespaces
-
-1) **Open the Codespace** for this repo.  
-2) **In the terminal**, run:
-   ```bash
-   ./run_qrcode.sh <URL> <FORMAT>
-   ```
-   **Examples:**
-   ```bash
-   ./run_qrcode.sh https://mycompany.com bmp
-   ./run_qrcode.sh http://nao-por-acaso.blogspot.com svg
-   ```
-3) **Output:** `output/qrcode_logo.<format>`
-
-> 🔐 First time: `chmod +x run_qrcode.sh` if required.
-
----
-
-### Notas / Notes / Notas
-- SVG: o script injeta um `<rect>` central (placeholder do logo).  
-- JPG/BMP: o quadrado é desenhado com PIL.  
-- Logs: exibidos no terminal via `loguru`.
-
+📄 Autor: Desenvolvedor Python Full Stack  
+📅 Versão: 2.0.0  
+🔗 Licença: MIT  
+🌐 Compatível com: Windows, Linux, GitHub Codespaces
