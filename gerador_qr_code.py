@@ -4,6 +4,9 @@ from PIL import Image, ImageDraw
 from loguru import logger
 from pathlib import Path
 
+import qrcode.image.svg   # ✅ Necessário para suportar formato SVG
+
+
 
 class QRCodeGenerator:
     def __init__(self, url: str, output_format: str = "jpg", output_dir: str = "output", size: int = 600):
@@ -31,8 +34,10 @@ class QRCodeGenerator:
         qr.make(fit=True)
 
         if self.output_format == "svg":
-            img = qr.make_image(image_factory=qrcode.image.svg.SvgImage)
+            factory = qrcode.image.svg.SvgImage
+            img = qr.make_image(image_factory=factory)
             return img
+
 
         img = qr.make_image(fill_color="black", back_color="white").convert('RGB')
         img = img.resize((self.size, self.size))
