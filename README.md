@@ -1,8 +1,6 @@
 
 # 🧩 Gerador de QR Code com Espaço para Logo / QR Code Generator with Logo Space / Generador de QR con Espacio para Logo
 
-# 🧩 Gerador de QR Code com Espaço para Logo / QR Code Generator with Logo Space / Generador de QR con Espacio para Logo
-
 ## 🇧🇷 Português
 
 ### 📘 Descrição
